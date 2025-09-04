@@ -300,7 +300,7 @@ const AppContent: React.FC = () => {
     if (isSplashVisible) {
         return (
             <div className={`fixed inset-0 z-50 flex items-center justify-center bg-gray-dark transition-opacity duration-500 ${isFadingOut ? 'opacity-0' : 'opacity-100'}`}>
-                <img src="/splash.jpg" alt="Image Gallery" className="max-w-full max-h-full object-contain" />
+                <img src="https://barefootmoments.org/splash.jpg" alt="Image Gallery" className="max-w-full max-h-full object-contain" />
             </div>
         );
     }

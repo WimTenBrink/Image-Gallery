@@ -42,6 +42,8 @@ const buildTree = (paths: string[]): TreeNode => {
 };
 
 const AppContent: React.FC = () => {
+    const [isSplashVisible, setIsSplashVisible] = useState(true);
+    const [isFadingOut, setIsFadingOut] = useState(false);
     const [selectedItem, setSelectedItem] = useState<SelectedItem>(null);
     const [modalType, setModalType] = useState<ModalType>(null);
     const [modalContent, setModalContent] = useState<string>('');
@@ -53,6 +55,21 @@ const AppContent: React.FC = () => {
     const [folderTree, setFolderTree] = useState<TreeNode | null>(null);
     const [storyTree, setStoryTree] = useState<TreeNode | null>(null);
     const [loading, setLoading] = useState({ folders: false, stories: false });
+
+    useEffect(() => {
+        const fadeTimer = setTimeout(() => {
+            setIsFadingOut(true);
+        }, 3000);
+
+        const removeTimer = setTimeout(() => {
+            setIsSplashVisible(false);
+        }, 3500); // 3000ms visible + 500ms fade duration
+
+        return () => {
+            clearTimeout(fadeTimer);
+            clearTimeout(removeTimer);
+        };
+    }, []);
 
     // Load state from localStorage on initial mount
     useEffect(() => {
@@ -279,6 +296,14 @@ const AppContent: React.FC = () => {
         ? selectedItem.data.id
         : selectedItem.data.path
       : null;
+
+    if (isSplashVisible) {
+        return (
+            <div className={`fixed inset-0 z-50 flex items-center justify-center bg-gray-dark transition-opacity duration-500 ${isFadingOut ? 'opacity-0' : 'opacity-100'}`}>
+                <img src="/splash.jpg" alt="Image Gallery" className="max-w-full max-h-full object-contain" />
+            </div>
+        );
+    }
 
     return (
         <div className={`grid grid-rows-[auto_1fr_auto] grid-cols-[350px_1fr_350px] h-screen bg-gray-900 text-white font-sans ${isAppBusy ? 'cursor-wait' : ''}`}>

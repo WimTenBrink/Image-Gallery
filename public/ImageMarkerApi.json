@@ -1,0 +1,162 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ImageMarker API",
+    "version": "1.0.0"
+  },
+  "host": "imagemarker.katje.org",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/Site/ImageFolders": {
+      "get": {
+        "summary": "Get Image Folders",
+        "description": "Retrieves a list of image folders.",
+        "operationId": "siteGetImageFolders",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of folders",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Folder"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Site/Images": {
+      "post": {
+        "summary": "Get Images in Folder",
+        "description": "Retrieves a list of images within a specified folder.",
+        "operationId": "siteGetImagesInFolder",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Folder path",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of images",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Image"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Site/Image": {
+      "post": {
+        "summary": "Get Image File",
+        "description": "Retrieves the image file.",
+        "operationId": "siteGetImageFile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "image/jpeg",
+          "image/png",
+          "image/gif"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Image name",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image file",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Folder": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "path": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "imageCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "folderId": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "fileSize": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

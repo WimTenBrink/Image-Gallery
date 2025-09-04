@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#1e3a8a',
+              'brand-secondary': '#3b82f6',
+              'gray-dark': '#111827',
+              'gray-medium': '#374151',
+              'gray-light': '#9ca3af',
+              'gray-lighter': '#d1d5db',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .markdown-content h1, .story-content h1 { font-size: 2.25rem; font-weight: bold; margin-bottom: 1rem; color: #f9fafb; border-bottom: 1px solid #4b5563; padding-bottom: 0.5rem; }
+      .markdown-content h2, .story-content h2 { font-size: 1.875rem; font-weight: bold; margin-bottom: 0.75rem; color: #f3f4f6; }
+      .markdown-content h3, .story-content h3 { font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; color: #e5e7eb; }
+      .markdown-content p, .story-content p { margin-bottom: 1rem; line-height: 1.6; color: #d1d5db; }
+      .markdown-content ul, .story-content ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; color: #d1d5db; }
+      .markdown-content li, .story-content li { margin-bottom: 0.5rem; }
+      .markdown-content a, .story-content a { color: #60a5fa; text-decoration: underline; }
+      .markdown-content a:hover, .story-content a:hover { color: #93c5fd; }
+      .story-content { width: 100%; height: 100%; overflow-y: auto; padding: 2rem; background-color: #1f2937; color: #d1d5db; border-radius: 8px; }
+      .story-content img { max-width: 100%; height: auto; border-radius: 8px; margin-top: 1rem; margin-bottom: 1rem; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.1.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-dark">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

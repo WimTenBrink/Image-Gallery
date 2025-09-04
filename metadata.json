@@ -1,0 +1,5 @@
+{
+  "name": "Image Gallery",
+  "description": "A web application to browse and view images from the ImageMarker API. It features a multi-panel layout to navigate folders, view images, and inspect image metadata, along with a built-in console for monitoring application and API logs.",
+  "requestFramePermissions": []
+}
